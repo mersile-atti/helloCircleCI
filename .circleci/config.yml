@@ -13,21 +13,18 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
-      - checkout
-      - run: mkdir workspace
-      - run: echo "Hello World!" > workspace/output.txt 
+      - run: echo "Hello World!" > ~/output.txt 
       - persist_to_workspace:
-          root: workspace
-          paths: echo-output
+          root: ~/
+          paths: output.txt
   print_output_file:
     docker:
       - image: circleci/node:13.8.0
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
-      - checkout
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/
       - run: |
           cat output.txt
 
