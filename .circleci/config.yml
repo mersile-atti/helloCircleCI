@@ -36,6 +36,6 @@ jobs:
 workflows:
   welcome:
     jobs:
-      - print_hello_world_output
+      - save_hello_world_output
       - print_output_file:
-          requires: [print_hello_world_output]
+          requires: [save_hello_world_output]
