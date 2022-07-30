@@ -54,10 +54,10 @@ jobs:
     steps: 
       - run:
           name: Install PIP
-          command: sudo apt-get install python-pip python-dev
+          command: apt-get install python-pip python-dev
       - run:
           name: install awscli
-          command: sudo pip install install awscli
+          command: pip install install awscli
       - run:
           name: Test Job
           command: return 1
