@@ -44,15 +44,16 @@ jobs:
       - image: alpine:latest
     steps: 
       - run: apk add --update curl
-      - run: smoke test
-      command: |
-          URL="https://blog.udacity.com/"
-          if curl -s --head ${URL}
-          then
-            return 0
-          else
-            return 1
-          fi
+      - run:
+          name: smoke test
+          command: |
+              URL="https://blog.udacity.com/"
+              if curl -s --head ${URL}
+              then
+                return 0
+              else
+                return 1
+              fi
 
 
 # Invoke jobs via workflows
