@@ -50,7 +50,7 @@ jobs:
   
   smoke_test:
     docker:
-      - image: alpine:latest
+      - image: ubuntu:latest
     steps: 
       - run: apk add --update curl
       - run:
@@ -64,9 +64,6 @@ jobs:
             else
               return 1
             fi
-      - run:
-          name: Test Job
-          command: return 1
       - destroy_environment
             
 
