@@ -7,16 +7,12 @@ version: 2.1
 
 commands:
   destroy_environment:
-    parameters:
-      when_to_run:
-        type: string
-        default: "on_fail"
     steps:
       - run:
           name: Destroy environment
           command: |
             aws cloudformation delete-stack --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5}
-          when: << parameters.when_to_run >>
+          when: on_fail
 jobs:
   create_infrastructure:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -35,8 +31,7 @@ jobs:
                 --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
                 --region us-east-1
       - run: return 1
-      - destroy_environment:
-          when_to_run: always
+      - destroy_environment
   
   configure_infrastructure:
     docker:
