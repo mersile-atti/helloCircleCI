@@ -50,14 +50,8 @@ jobs:
   
   smoke_test:
     docker:
-      - image: alpine:latest
+      - image: amazon/aws-cli
     steps: 
-      - run:
-          name: Install PIP
-          command: apt-get install python-pip python-dev
-      - run:
-          name: install awscli
-          command: pip install install awscli
       - run:
           name: Test Job
           command: return 1
