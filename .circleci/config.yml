@@ -61,8 +61,7 @@ jobs:
       - run:
           name: Test Job
           command: return 1
-      - destroy_environment:
-          when_to_run: always
+      - destroy_environment
             
 
 
